@@ -25,6 +25,7 @@ statsRef.on("value", (snapshot) => {
   // 4. Seleccionar AMBOS elementos HTML
   const winsElement = document.getElementById("wins-value");
   const losesElement = document.getElementById("loses-value");
+  const attemptsElement = document.getElementById("attempts-value");
 
   // 5. Comprobar si el objeto 'stats' existe
   if (stats) {
@@ -32,11 +33,13 @@ statsRef.on("value", (snapshot) => {
     // Usamos '|| 0' por si 'wins' o 'loses' aún no se han creado
     winsElement.innerText = stats.wins || 0;
     losesElement.innerText = stats.loses || 0;
+    attemptsElement.innerText = stats.attempts || 0;
   } else {
     // 7. ¡CORRECCIÓN! Si 'stats' no existe, inicializarlo
     // con la estructura de OBJETO correcta.
     statsRef.set({ wins: 0, loses: 0 });
     winsElement.innerText = 0;
     losesElement.innerText = 0;
+    attemptsElement.innerText = 0;
   }
 });
