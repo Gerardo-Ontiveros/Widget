@@ -1,4 +1,3 @@
-// 1. Configuración de Firebase (Copia esto desde tu panel de Firebase)
 const firebaseConfig = {
   apiKey: "AIzaSyD4PSLSrCqBQ80DXzAqVcstZ1rk8y35Y_g",
   authDomain: "clamosbot.firebaseapp.com",
@@ -10,36 +9,34 @@ const firebaseConfig = {
   measurementId: "G-3TZ7Z47K2F",
 };
 
-// 2. Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
+
 const database = firebase.database();
+const statsRef = database.ref("stream/seasonFinal");
 
-// 1. Apuntar al nodo "padre" (esto estaba bien)
-const statsRef = database.ref("stream/stats");
-
-// 2. Escuchar cambios en CUALQUIER valor dentro de "stats"
 statsRef.on("value", (snapshot) => {
-  // 3. ¡CORRECCIÓN! Obtener el objeto COMPLETO
   const stats = snapshot.val();
 
-  // 4. Seleccionar AMBOS elementos HTML
-  const winsElement = document.getElementById("wins-value");
-  const losesElement = document.getElementById("loses-value");
-  const attemptsElement = document.getElementById("racha-value");
-
-  // 5. Comprobar si el objeto 'stats' existe
   if (stats) {
-    // 6. Actualizar cada elemento con su valor
-    // Usamos '|| 0' por si 'wins' o 'loses' aún no se han creado
-    winsElement.innerText = stats.wins || 0;
-    losesElement.innerText = stats.loses || 0;
-    attemptsElement.innerText = stats.racha || 0;
-  } else {
-    // 7. ¡CORRECCIÓN! Si 'stats' no existe, inicializarlo
-    // con la estructura de OBJETO correcta.
-    statsRef.set({ wins: 0, loses: 0 });
-    winsElement.innerText = 0;
-    losesElement.innerText = 0;
-    rachaElement.innerText = 0;
+    // --- SERGIO ---
+    if (stats["Sergio"]) { 
+      document.getElementById("sergio-wins").innerText = stats["Sergio"].wins || 0;
+      document.getElementById("sergio-loses").innerText = stats["Sergio"].loses || 0;
+      document.getElementById("sergio-rank").innerText = stats["Sergio"].rank || 0;
+    }
+
+    // --- ARDEN ---
+    if (stats["Arden"]) { 
+      document.getElementById("arden-wins").innerText = stats["Arden"].wins || 0;
+      document.getElementById("arden-loses").innerText = stats["Arden"].loses || 0;
+      document.getElementById("arden-rank").innerText = stats["Arden"].rank || 0;
+    }
+
+    // --- ANABAN ---
+    if (stats["Anaban"]) { 
+      document.getElementById("anaban-wins").innerText = stats["Anaban"].wins || 0;
+      document.getElementById("anaban-loses").innerText = stats["Anaban"].loses || 0;
+      document.getElementById("anaban-rank").innerText = stats["Anaban"].rank || 0;
+    }
   }
 });
