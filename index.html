@@ -12,51 +12,27 @@
     </style>
   </head>
 <body>
-    <div class="flex flex-col h-dvh justify-center items-center gap-2">
-      
-      <div class="flex gap-3.5">
-        <h2 class="text-2xl font-semibold">Sergio:</h2>
-        <h2 class="text-2xl font-semibold">
-          W: <span class="font-extrabold" id="sergio-wins">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          L: <span class="font-extrabold" id="sergio-loses">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          Rank: <span class="font-extrabold" id="sergio-rank">0</span>
-        </h2>
-      </div>
-      
-      <div class="flex gap-3.5">
-        <h2 class="text-2xl font-semibold">Arden:</h2>
-        <h2 class="text-2xl font-semibold">
-          W: <span class="font-extrabold" id="arden-wins">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          L: <span class="font-extrabold" id="arden-loses">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          Rank: <span class="font-extrabold" id="arden-rank">0</span>
-        </h2>
-      </div>
-      
-      <div class="flex gap-3.5">
-        <h2 class="text-2xl font-semibold">Anaban:</h2>
-        <h2 class="text-2xl font-semibold">
-          W: <span class="font-extrabold" id="anaban-wins">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          L: <span class="font-extrabold" id="anaban-loses">0</span>
-        </h2>
-        <h2 class="text-2xl font-semibold">
-          Rank: <span class="font-extrabold" id="anaban-rank">0</span>
-        </h2>
-      </div>
+    <div class="flex flex-col h-dvh justify-center items-center text-white">
 
+      <div class="flex gap-3.5">
+
+        <h2 class="text-2xl font-semibold">
+          Victorias: <span class="font-extrabold" id="wins-value">0</span>
+        </h2>
+        <h2 class="text-2xl font-semibold">
+          Derrotas: <span class="font-extrabold" id="loses-value">0</span>
+        </h2>
+      </div>
+      <h2 class="text-2xl font-semibold">
+        Racha: <span class="font-extrabold" id="racha-value">0</span>
+        <span>🔥</span>
+      </h2>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script> <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script src="app.js"></script>
   </body>
 </html>

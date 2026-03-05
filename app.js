@@ -10,33 +10,26 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
 const database = firebase.database();
-const statsRef = database.ref("stream/seasonFinal");
+
+const statsRef = database.ref("stream/stats");
 
 statsRef.on("value", (snapshot) => {
   const stats = snapshot.val();
 
+  // 4. Seleccionar AMBOS elementos HTML
+  const winsElement = document.getElementById("wins-value");
+  const losesElement = document.getElementById("loses-value");
+  const attemptsElement = document.getElementById("racha-value");
+
   if (stats) {
-    // --- SERGIO ---
-    if (stats["Sergio"]) { 
-      document.getElementById("sergio-wins").innerText = stats["Sergio"].wins || 0;
-      document.getElementById("sergio-loses").innerText = stats["Sergio"].loses || 0;
-      document.getElementById("sergio-rank").innerText = stats["Sergio"].rank || 0;
-    }
-
-    // --- ARDEN ---
-    if (stats["Arden"]) { 
-      document.getElementById("arden-wins").innerText = stats["Arden"].wins || 0;
-      document.getElementById("arden-loses").innerText = stats["Arden"].loses || 0;
-      document.getElementById("arden-rank").innerText = stats["Arden"].rank || 0;
-    }
-
-    // --- ANABAN ---
-    if (stats["Anaban"]) { 
-      document.getElementById("anaban-wins").innerText = stats["Anaban"].wins || 0;
-      document.getElementById("anaban-loses").innerText = stats["Anaban"].loses || 0;
-      document.getElementById("anaban-rank").innerText = stats["Anaban"].rank || 0;
-    }
+    winsElement.innerText = stats.wins || 0;
+    losesElement.innerText = stats.loses || 0;
+    attemptsElement.innerText = stats.racha || 0;
+  } else {
+    statsRef.set({ wins: 0, loses: 0, racha: 0 });
+    winsElement.innerText = 0;
+    losesElement.innerText = 0;
+    attemptsElement.innerText = 0;
   }
 });
